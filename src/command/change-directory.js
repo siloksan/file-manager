@@ -11,6 +11,6 @@ export function changeDirectory(path) {
 	try {
 		chdir(path);
 	} catch (err) {
-		throw new Error(`[Error]: Cannot change directory: ${err}`);
+		throw new Error(`Cannot change directory: ${err}`);
 	}
 }

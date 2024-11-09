@@ -1,7 +1,3 @@
 export function errorHandler(error) {
-	console.error('[Error]:', error.message); // Вывод ошибки в консоль
-	// Логика обработки ошибок может включать:
-	// 1. Логирование ошибок в файл, например, в `logs/error.log`
-	// 2. Завершение процесса или восстановление работы
-	// 3. Настраиваемые сообщения для пользователя
+	console.error('[Error]:', error.message);
 }
