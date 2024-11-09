@@ -1,10 +1,16 @@
-import { greet } from '#src/services/index.js';
+import { CliInterface } from '#src/interface/cli-interface.js';
+import { goodbye, greet } from '#src/services/index.js';
+
 export class AppRunner {
+	constructor() {
+		this.interface = new CliInterface(this);
+	}
 	execute() {
 		greet();
+		this.interface.requestUserInput();
 	}
 
 	undo() {
-		console.log('Undoing start app command');
+		goodbye();
 	}
 }
