@@ -16,6 +16,6 @@
 		"globals": "^13.x.x"
 	},
 	"rules": {
-		"no-unused-vars": "off"
+		"no-unused-vars": "on"
 	}
 }
