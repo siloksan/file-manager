@@ -1,13 +1,18 @@
 import { CliInterface } from '#src/interface/cli-interface.js';
-import { goodbye, greet } from '#src/services/index.js';
+import { goodbye, initializeApp } from '#src/services/index.js';
 
 export class AppRunner {
 	constructor() {
-		this.interface = new CliInterface(this);
+		this.userInterface = new CliInterface(this);
 	}
 	execute() {
-		greet();
-		this.interface.requestUserInput();
+		try {
+			initializeApp(this.userInterface);
+			this.userInterface.requestUserInput();
+		} catch (error) {
+			setImmediate(() => process.exit(1));
+			throw new Error(error.message);
+		}
 	}
 
 	undo() {

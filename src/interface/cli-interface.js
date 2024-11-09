@@ -9,7 +9,6 @@ export class CliInterface {
 			input,
 			output,
 		});
-		this._setPromptText();
 	}
 
 	async requestUserInput() {
@@ -21,6 +20,10 @@ export class CliInterface {
 		this.rl.on('line', this._readlineHandler).on('close', this._closeReadline);
 	}
 
+	updatePromptText = () => {
+		setPromptText(this.rl);
+	};
+
 	_readlineHandler = async (line) => {
 		switch (line.trim()) {
 			case 'hello':
@@ -31,10 +34,6 @@ export class CliInterface {
 				break;
 		}
 		this.rl.prompt();
-	};
-
-	_setPromptText = () => {
-		setPromptText(this.rl);
 	};
 
 	_closeReadline = () => {

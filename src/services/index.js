@@ -1,4 +1,4 @@
 import { goodbye } from './goodbye.js';
-import { greet } from './greet.js';
+import { initializeApp } from './initializeApp.js';
 
-export { goodbye, greet };
+export { goodbye, initializeApp };

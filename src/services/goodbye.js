@@ -4,5 +4,5 @@ import { argv } from 'node:process';
 export function goodbye() {
 	const username = getUsername(argv);
 
-	console.log(`Thank you for using File Manager, ${username}, goodbye!!`);
+	console.log(`Thank you for using File Manager, ${username}, goodbye!`);
 }
