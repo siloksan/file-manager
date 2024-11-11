@@ -1,6 +1,8 @@
-import { errorHandler } from './error-handler.js';
-import { getHomeDirectory } from './getHomeDirectory.js';
-import { getUsername } from './getUsername.js';
-import { setPromptText } from './setPromptText.js';
+import { getHomeDirectory } from './get-home-directory.js';
+import { getUsername } from './get-username.js';
+import { setPromptText } from './set-prompt-text.js';
+import { getCommandHandler } from './get-command-handler.js';
+import { isNullable } from './validator.js';
+import { getCurrentPath } from './get-current-path.js';
 
-export { errorHandler, getHomeDirectory, getUsername, setPromptText };
+export { getHomeDirectory, getUsername, setPromptText, getCommandHandler, isNullable, getCurrentPath };

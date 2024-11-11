@@ -1,6 +1,7 @@
-import { setPromptText } from '#src/utils/index.js';
 import { stdin as input, stdout as output } from 'node:process';
 import * as readline from 'node:readline/promises';
+import { setPromptText } from '#src/utils/index.js';
+import { commandHandler } from '#src/handlers/index.js';
 
 export class CliInterface {
 	constructor(appRunner) {
@@ -25,14 +26,7 @@ export class CliInterface {
 	};
 
 	_readlineHandler = async (line) => {
-		switch (line.trim()) {
-			case 'hello':
-				console.log('world!');
-				break;
-			default:
-				console.log(`Say what? I might have heard '${line.trim()}'`);
-				break;
-		}
+		await commandHandler(line, this.rl);
 		this.rl.prompt();
 	};
 

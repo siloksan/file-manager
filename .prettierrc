@@ -7,13 +7,5 @@
 	"trailingComma": "es5",
 	"printWidth": 120,
 	"arrowParens": "always",
-	"singleAttributePerLine": false,
-	"overrides": [
-		{
-			"files": "*.sass",
-			"options": {
-				"parser": "sass"
-			}
-		}
-	]
+	"singleAttributePerLine": false
 }

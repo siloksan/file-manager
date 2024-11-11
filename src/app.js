@@ -1,10 +1,10 @@
-import { AppRunner } from '#src/command/index.js';
-import { errorHandler } from '#src/utils/index.js';
+import { AppRunner } from '#src/services/index.js';
+import { errorHandler } from '#src/handlers/index.js';
 
-const startApp = new AppRunner();
+export const app = new AppRunner();
 
 try {
-	startApp.execute();
+	app.execute();
 } catch (error) {
 	errorHandler(error);
 }
