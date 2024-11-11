@@ -1,6 +1,10 @@
 const COMMAND_FOLDERS = 'commands';
 
 export const LIST_OF_COMMANDS = {
-	cat: { arguments: undefined, name: 'catFile', route: '/command/cat-file.js' },
-	up: { arguments: undefined, name: 'goUp', route: `../${COMMAND_FOLDERS}/go-up.js` },
+	up: { arguments: null, name: 'up', route: `../${COMMAND_FOLDERS}/up.js` },
+	cd: { arguments: 'pathName', name: 'cd', route: `../${COMMAND_FOLDERS}/cd.js` },
+};
+
+export const ERROR_MESSAGES = {
+	invalidInput: 'Invalid input',
 };
