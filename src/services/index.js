@@ -1,4 +1,5 @@
+import { AppRunner } from './app-runner.js';
 import { goodbye } from './goodbye.js';
 import { initializeApp } from './initializeApp.js';
 
-export { goodbye, initializeApp };
+export { AppRunner, goodbye, initializeApp };

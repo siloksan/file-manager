@@ -7,7 +7,7 @@ export class AppRunner {
 	}
 	execute() {
 		try {
-			initializeApp(this.userInterface);
+			initializeApp();
 			this.userInterface.requestUserInput();
 		} catch (error) {
 			setImmediate(() => process.exit(1));
