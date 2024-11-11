@@ -1,14 +1,15 @@
 import { resolve } from 'path';
 import { getCurrentPath } from '#src/utils/index.js';
 import { changeDirectory } from '#src/handlers/index.js';
+import { ERROR_MESSAGES } from '#src/constants/const.js';
 
-export function goUp(args) {
+export function up(args) {
 	if (args.length > 0) {
-		throw new Error("This command don't have arguments!");
+		console.log(ERROR_MESSAGES.invalidInput);
+		return;
 	}
 
 	const currentPath = getCurrentPath();
-	console.log('currentPath: ', currentPath);
 	const parentPath = resolve(currentPath, '..');
 
 	if (parentPath === currentPath) {
