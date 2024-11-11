@@ -1,6 +1,5 @@
 import { resolve } from 'path';
 import { stat } from 'fs/promises';
-import { getCurrentPath } from '#src/utils/index.js';
 import { changeDirectory } from '#src/handlers/index.js';
 import { ERROR_MESSAGES } from '#src/constants/const.js';
 
