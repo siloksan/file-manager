@@ -1,4 +1,13 @@
 const COMMAND_FOLDERS = 'commands';
+const OS_COMMAND_FOLDERS = 'os';
+
+export const OS_ARGUMENTS = {
+	'--EOL': { name: 'eol', route: `../${COMMAND_FOLDERS}/${OS_COMMAND_FOLDERS}/eol.js` },
+	'--cpus': { name: 'cpus', route: `../${COMMAND_FOLDERS}/${OS_COMMAND_FOLDERS}/cpus.js` },
+	'--homedir': { name: 'homedir', route: `../${COMMAND_FOLDERS}/${OS_COMMAND_FOLDERS}/homedir.js` },
+	'--username': { name: 'username', route: `../${COMMAND_FOLDERS}/${OS_COMMAND_FOLDERS}/username.js` },
+	'--architecture': { name: 'architecture', route: `../${COMMAND_FOLDERS}/${OS_COMMAND_FOLDERS}/architecture.js` },
+};
 
 export const LIST_OF_COMMANDS = {
 	up: { arguments: null, name: 'up', route: `../${COMMAND_FOLDERS}/up.js` },
@@ -32,6 +41,11 @@ export const LIST_OF_COMMANDS = {
 		route: `../${COMMAND_FOLDERS}/mv.js`,
 	},
 	rm: { arguments: 'pathName', name: 'rm', route: `../${COMMAND_FOLDERS}/rm.js` },
+	os: {
+		arguments: OS_ARGUMENTS,
+		name: 'os',
+		route: `../${COMMAND_FOLDERS}/os.js`,
+	},
 };
 
 export const ERROR_MESSAGES = {
