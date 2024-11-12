@@ -17,6 +17,22 @@ export const LIST_OF_COMMANDS = {
 	add: { arguments: 'fileName', name: 'add', route: `../${COMMAND_FOLDERS}/add.js` },
 	mkdir: { arguments: 'dirName', name: 'mkdir', route: `../${COMMAND_FOLDERS}/mkdir.js` },
 	hash: { arguments: 'pathName', name: 'hash', route: `../${COMMAND_FOLDERS}/hash.js` },
+	compress: {
+		arguments: {
+			pathName: 'sourcePath',
+			newName: 'destPath',
+		},
+		name: 'compress',
+		route: `../${COMMAND_FOLDERS}/compress.js`,
+	},
+	decompress: {
+		arguments: {
+			pathName: 'sourcePath',
+			newName: 'destPath',
+		},
+		name: 'decompress',
+		route: `../${COMMAND_FOLDERS}/decompress.js`,
+	},
 	rn: {
 		arguments: {
 			pathName: 'pathName',

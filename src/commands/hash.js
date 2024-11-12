@@ -7,6 +7,7 @@ export async function hash(args) {
 		console.log(ERROR_MESSAGES.invalidInput);
 		return;
 	}
+
 	return new Promise((res, rej) => {
 		const hash = crypto.createHash('sha256');
 		const [pathName] = args;

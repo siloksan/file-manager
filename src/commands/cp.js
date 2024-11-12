@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream } from 'node:fs';
-import { join } from 'node:path';
+import { join, sep } from 'node:path';
 import { promises as fs } from 'node:fs';
 import { pipeline } from 'stream/promises';
 import { ERROR_MESSAGES } from '#src/constants/const.js';
@@ -12,7 +12,7 @@ export async function cp(args) {
 
 	const [sourcePath, targetDirectory] = args;
 
-	const fileName = sourcePath.split('/').pop();
+	const fileName = sourcePath.split(sep).pop();
 	const destinationPath = join(targetDirectory, fileName);
 
 	try {

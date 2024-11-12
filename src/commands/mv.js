@@ -1,6 +1,6 @@
 import { createReadStream, createWriteStream } from 'node:fs';
 import { mkdir, unlink } from 'fs/promises';
-import { join } from 'node:path';
+import { join, sep } from 'node:path';
 import { pipeline } from 'node:stream/promises';
 import { ERROR_MESSAGES } from '#src/constants/const.js';
 
@@ -11,7 +11,7 @@ export async function mv(args) {
 	}
 
 	const [sourcePath, targetDirectory] = args;
-	const fileName = sourcePath.split('/').pop();
+	const fileName = sourcePath.split(sep).pop();
 	const destinationPath = join(targetDirectory, fileName);
 
 	try {
