@@ -7,6 +7,14 @@ export const LIST_OF_COMMANDS = {
 	cat: { arguments: 'fileName', name: 'cat', route: `../${COMMAND_FOLDERS}/cat.js` },
 	add: { arguments: 'fileName', name: 'add', route: `../${COMMAND_FOLDERS}/add.js` },
 	mkdir: { arguments: 'dirName', name: 'mkdir', route: `../${COMMAND_FOLDERS}/mkdir.js` },
+	rn: {
+		arguments: {
+			pathName: 'pathName',
+			newName: 'newName',
+		},
+		name: 'rn',
+		route: `../${COMMAND_FOLDERS}/rn.js`,
+	},
 };
 
 export const ERROR_MESSAGES = {
