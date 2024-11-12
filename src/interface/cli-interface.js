@@ -26,7 +26,7 @@ export class CliInterface {
 	};
 
 	_readlineHandler = async (line) => {
-		await commandHandler(line, this.rl);
+		await commandHandler(line);
 		this.rl.prompt();
 	};
 
