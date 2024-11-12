@@ -26,6 +26,10 @@ export class CliInterface {
 	};
 
 	_readlineHandler = async (line) => {
+		if (line === '.exit') {
+			this._closeReadline();
+			return;
+		}
 		await commandHandler(line);
 		this.rl.prompt();
 	};
