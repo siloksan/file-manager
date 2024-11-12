@@ -15,6 +15,14 @@ export const LIST_OF_COMMANDS = {
 		name: 'rn',
 		route: `../${COMMAND_FOLDERS}/rn.js`,
 	},
+	cp: {
+		arguments: {
+			sourcePath: 'pathName',
+			destinationDirectory: 'pathName',
+		},
+		name: 'cp',
+		route: `../${COMMAND_FOLDERS}/cp.js`,
+	},
 };
 
 export const ERROR_MESSAGES = {
