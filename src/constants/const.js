@@ -31,6 +31,7 @@ export const LIST_OF_COMMANDS = {
 		name: 'mv',
 		route: `../${COMMAND_FOLDERS}/mv.js`,
 	},
+	rm: { arguments: 'pathName', name: 'rm', route: `../${COMMAND_FOLDERS}/rm.js` },
 };
 
 export const ERROR_MESSAGES = {
