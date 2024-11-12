@@ -23,6 +23,14 @@ export const LIST_OF_COMMANDS = {
 		name: 'cp',
 		route: `../${COMMAND_FOLDERS}/cp.js`,
 	},
+	mv: {
+		arguments: {
+			sourcePath: 'pathName',
+			destinationDirectory: 'pathName',
+		},
+		name: 'mv',
+		route: `../${COMMAND_FOLDERS}/mv.js`,
+	},
 };
 
 export const ERROR_MESSAGES = {
