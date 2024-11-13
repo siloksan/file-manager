@@ -16,12 +16,10 @@ export async function ls(args) {
 		const directories = [];
 
 		for (const item of contentList) {
-			const type = item.isDirectory() ? 'directory' : 'file';
-			const cell = { name: item.name, type };
 			if (item.isDirectory()) {
-				directories.push(cell);
-			} else {
-				files.push(cell);
+				directories.push({ name: item.name, type: 'directory' });
+			} else if (item.isFile()) {
+				files.push({ name: item.name, type: 'file' });
 			}
 		}
 
