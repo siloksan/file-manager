@@ -1,10 +1,10 @@
-import os from 'node:os';
+import os from "node:os";
 
 export function cpus() {
 	const cpus = os.cpus().map((cpu) => {
 		const { model, speed } = cpu;
-		return { model, 'clock rate': (speed / 1000).toFixed(2) + ' GHz' };
+		return { model, "clock rate": (speed / 1000).toFixed(2) + " GHz" };
 	});
-	console.log('overall amount of CPUS:', cpus.length, '\n');
+	console.log("overall amount of CPUS:", cpus.length, os.EOL);
 	console.table(cpus);
 }
