@@ -17,8 +17,6 @@ export async function hash(args) {
 			console.log(hash.digest('hex'));
 			res();
 		});
-		readStream.on('error', (err) => {
-			rej(err);
-		});
+		readStream.on('error', rej);
 	});
 }

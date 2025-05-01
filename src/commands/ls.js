@@ -12,22 +12,28 @@ export async function ls(args) {
 
 	try {
 		const contentList = await readdir(currentPath, { withFileTypes: true });
-		const files = [];
-		const directories = [];
-
-		for (const item of contentList) {
+		const handledContentList = contentList.map((item) => {
 			if (item.isDirectory()) {
-				directories.push({ name: item.name, type: 'directory' });
+				return { name: item.name, type: 'directory' };
 			} else if (item.isFile()) {
-				files.push({ name: item.name, type: 'file' });
+				return { name: item.name, type: 'file' };
+			} else {
+				return null;
 			}
-		}
+		});
 
-		const sortedDirectories = directories.toSorted((a, b) => a.name.localeCompare(b.name));
-		const sortedFiles = files.toSorted((a, b) => a.name.localeCompare(b.name));
-		const table = [...sortedDirectories, ...sortedFiles];
+		const filteredContentList = handledContentList.filter((item) => item !== null);
+		const sortedContentList = filteredContentList.sort((a, b) => {
+			if (a.type === 'directory' && b.type === 'file') {
+				return -1;
+			} else if (a.type === 'file' && b.type === 'directory') {
+				return 1;
+			} else {
+				return a.name.localeCompare(b.name);
+			}
+		});
 
-		console.table(table);
+		console.table(sortedContentList);
 	} catch (err) {
 		throw new Error(`Cannot read directory: ${err.message}`);
 	}

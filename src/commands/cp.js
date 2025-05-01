@@ -1,7 +1,6 @@
-import { createReadStream, createWriteStream } from 'node:fs';
+import { createReadStream, createWriteStream, promises as fsPromises } from 'node:fs';
 import { join, sep } from 'node:path';
-import { promises as fs } from 'node:fs';
-import { pipeline } from 'stream/promises';
+import { pipeline } from 'node:stream/promises';
 import { ERROR_MESSAGES } from '#src/constants/const.js';
 
 export async function cp(args) {
@@ -13,12 +12,21 @@ export async function cp(args) {
 	const [sourcePath, targetDirectory] = args;
 
 	const fileName = sourcePath.split(sep).pop();
-	const destinationPath = join(targetDirectory, fileName);
+	const destinationPath = join(targetDirectory, `${fileName}-cp`);
 
 	try {
-		await fs.mkdir(targetDirectory, { recursive: true });
-		await pipeline(createReadStream(sourcePath), createWriteStream(destinationPath));
+		const readStream = createReadStream(sourcePath);
+		await new Promise((resolve, reject) => {
+			readStream.once('open', resolve);
+			readStream.once('error', reject);
+		});
+
+		await fsPromises.mkdir(targetDirectory, { recursive: true });
+
+		const writeStream = createWriteStream(destinationPath);
+
+		await pipeline(readStream, writeStream);
 	} catch (error) {
-		throw new Error(`Error copying file: ${error.message}`);
+		throw new Error(`Error copying file: ${error instanceof Error ? error.message : String(error)}`);
 	}
 }

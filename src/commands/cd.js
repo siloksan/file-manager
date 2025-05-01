@@ -15,7 +15,7 @@ export async function cd(newPath) {
 		if (status.isDirectory()) {
 			changeDirectory(absolutePath);
 		}
-	} catch (_) {
+	} catch {
 		console.log(ERROR_MESSAGES.invalidInput);
 	}
 }

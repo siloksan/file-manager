@@ -11,12 +11,12 @@ export async function decompress(args) {
 
 	const [sourcePath, destinationPath] = args;
 
-	const compress = createBrotliDecompress();
+	const decompress = createBrotliDecompress();
 	const readStream = createReadStream(sourcePath);
 	const writeStream = createWriteStream(destinationPath);
 
 	try {
-		await pipeline(readStream, compress, writeStream);
+		await pipeline(readStream, decompress, writeStream);
 	} catch (err) {
 		throw new Error(`Error decompressing file: ${err.message}`);
 	}

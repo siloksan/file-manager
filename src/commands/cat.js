@@ -11,12 +11,8 @@ export async function cat(pathName) {
 		const absolutePath = resolve(pathName[0]);
 		const readStream = createReadStream(absolutePath);
 		readStream.pipe(process.stdout);
-		readStream.on('error', (err) => {
-			rej(err);
-		});
 
-		readStream.on('end', () => {
-			res();
-		});
+		readStream.on('error', rej);
+		readStream.on('end', res);
 	});
 }

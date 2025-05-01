@@ -1,7 +1,7 @@
-import { createWriteStream, createReadStream } from 'fs';
-import { createBrotliCompress } from 'node:zlib';
-import { pipeline } from 'stream/promises';
-import { ERROR_MESSAGES } from '#src/constants/const.js';
+import { createWriteStream, createReadStream } from "node:fs";
+import { createBrotliCompress } from "node:zlib";
+import { pipeline } from "node:stream/promises";
+import { ERROR_MESSAGES } from "#src/constants/const.js";
 
 export async function compress(args) {
 	if (args.length !== 2) {
@@ -11,11 +11,16 @@ export async function compress(args) {
 
 	const [sourcePath, destinationPath] = args;
 
-	const compress = createBrotliCompress();
-	const readStream = createReadStream(sourcePath);
-	const writeStream = createWriteStream(destinationPath);
-
 	try {
+		const compress = createBrotliCompress();
+		const readStream = createReadStream(sourcePath);
+		await new Promise((resolve, reject) => {
+			readStream.once("open", resolve);
+			readStream.once("error", reject);
+		});
+
+		const writeStream = createWriteStream(destinationPath);
+
 		await pipeline(readStream, compress, writeStream);
 	} catch (err) {
 		throw new Error(`Error compressing file: ${err.message}`);
