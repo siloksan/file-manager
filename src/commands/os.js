@@ -3,8 +3,7 @@ import { getCommandHandler } from '#src/utils/index.js';
 
 export async function os(args) {
 	if (args.length !== 1) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const [command] = args;

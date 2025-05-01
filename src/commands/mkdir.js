@@ -1,10 +1,9 @@
-import { mkdir as mkdirAsync } from 'fs/promises';
-import { ERROR_MESSAGES } from '#src/constants/const.js';
+import { mkdir as mkdirAsync } from "fs/promises";
+import { ERROR_MESSAGES } from "#src/constants/const.js";
 
 export async function mkdir(dirName) {
 	if (dirName.length !== 1) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	try {

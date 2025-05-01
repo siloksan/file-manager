@@ -1,10 +1,9 @@
-import { rename } from 'fs/promises';
-import { ERROR_MESSAGES } from '#src/constants/const.js';
+import { rename } from "fs/promises";
+import { ERROR_MESSAGES } from "#src/constants/const.js";
 
 export async function rn(args) {
 	if (args.length !== 2) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const [pathName, newName] = args;

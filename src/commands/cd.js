@@ -5,8 +5,7 @@ import { ERROR_MESSAGES } from '#src/constants/const.js';
 
 export async function cd(newPath) {
 	if (newPath.length === 0 || newPath.length > 1) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const absolutePath = resolve(newPath[0]);
@@ -16,6 +15,6 @@ export async function cd(newPath) {
 			changeDirectory(absolutePath);
 		}
 	} catch {
-		console.log(ERROR_MESSAGES.invalidInput);
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 }

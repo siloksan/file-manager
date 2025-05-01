@@ -1,10 +1,9 @@
-import { unlink } from 'fs/promises';
-import { ERROR_MESSAGES } from '#src/constants/const.js';
+import { unlink } from "fs/promises";
+import { ERROR_MESSAGES } from "#src/constants/const.js";
 
 export async function rm(args) {
 	if (args.length !== 1) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const [pathName] = args;
@@ -12,6 +11,6 @@ export async function rm(args) {
 	try {
 		await unlink(pathName);
 	} catch (error) {
-		console.error(`Failed to remove file: ${error.message}`);
+		throw new Error(`Failed to remove file: ${error.message}`);
 	}
 }

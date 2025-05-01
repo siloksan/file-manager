@@ -4,8 +4,7 @@ import { getCurrentPath } from '#src/utils/index.js';
 
 export async function ls(args) {
 	if (args.length > 0) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const currentPath = getCurrentPath();

@@ -5,8 +5,7 @@ import { ERROR_MESSAGES } from '#src/constants/const.js';
 
 export async function decompress(args) {
 	if (args.length !== 2) {
-		console.log(ERROR_MESSAGES.invalidInput);
-		return;
+		throw new Error(ERROR_MESSAGES.invalidInput);
 	}
 
 	const [sourcePath, destinationPath] = args;

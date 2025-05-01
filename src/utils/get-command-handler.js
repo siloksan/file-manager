@@ -3,8 +3,7 @@ export async function getCommandHandler(command, commandList) {
 	const commandInfo = commandList[commandName];
 
 	if (!commandInfo) {
-		console.log(`Invalid input: ${command}`);
-		return;
+		throw new Error(`${ERROR_MESSAGES.invalidInput}: ${command}`);
 	}
 
 	try {
