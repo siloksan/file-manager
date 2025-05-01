@@ -1,0 +1,22 @@
+import { createWriteStream, createReadStream } from 'fs';
+import { createBrotliDecompress } from 'node:zlib';
+import { pipeline } from 'stream/promises';
+import { ERROR_MESSAGES } from '#src/constants/const.js';
+
+export async function decompress(args) {
+	if (args.length !== 2) {
+		throw new Error(ERROR_MESSAGES.invalidInput);
+	}
+
+	const [sourcePath, destinationPath] = args;
+
+	const decompress = createBrotliDecompress();
+	const readStream = createReadStream(sourcePath);
+	const writeStream = createWriteStream(destinationPath);
+
+	try {
+		await pipeline(readStream, decompress, writeStream);
+	} catch (err) {
+		throw new Error(`Error decompressing file: ${err.message}`);
+	}
+}
